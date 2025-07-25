@@ -1,0 +1,513 @@
+/* Reset et variables */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --beige-light: #F5F5DC;
+    --white-off: #F8F8F8;
+    --gray-light: #D3D3D3;
+    --burgundy: #800020;
+    --forest-green: #228B22;
+    --gold: #FFD700;
+    --dark-text: #2C2C2C;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--dark-text);
+    background-color: var(--white-off);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Hero */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--beige-light) 0%, var(--white-off) 50%, #F0E6D2 100%);
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--burgundy);
+    margin-bottom: 1rem;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--forest-green);
+    margin-bottom: 3rem;
+    animation: fadeInUp 1.5s ease-out 0.3s both;
+}
+
+.scroll-indicator {
+    animation: fadeInUp 1.5s ease-out 0.6s both;
+}
+
+.scroll-indicator span {
+    display: block;
+    margin-bottom: 1rem;
+    color: var(--dark-text);
+    font-weight: 300;
+}
+
+.scroll-arrow {
+    width: 2px;
+    height: 30px;
+    background: var(--gold);
+    margin: 0 auto;
+    position: relative;
+    animation: bounce 2s infinite;
+}
+
+.scroll-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -4px;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    transform: rotate(45deg);
+}
+
+/* Étincelles magiques */
+.magical-sparkles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.magical-sparkles::before,
+.magical-sparkles::after {
+    content: '✨';
+    position: absolute;
+    font-size: 2rem;
+    animation: sparkle 3s infinite;
+}
+
+.magical-sparkles::before {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.magical-sparkles::after {
+    top: 60%;
+    right: 15%;
+    animation-delay: 1.5s;
+}
+
+/* Sections */
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--burgundy);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: var(--gold);
+}
+
+/* Section Self-Care */
+.selfcare-section {
+    padding: 100px 0;
+    background: var(--white-off);
+}
+
+.selfcare-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.selfcare-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.selfcare-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card-image {
+    height: 300px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.selfcare-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 2rem;
+}
+
+.card-content h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--burgundy);
+    margin-bottom: 1rem;
+}
+
+.card-content p {
+    color: var(--dark-text);
+    line-height: 1.8;
+}
+
+/* Section Magique */
+.magic-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+    color: white;
+    position: relative;
+}
+
+.magic-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="5" cy="5" r="0.5" fill="%23FFD700" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+    opacity: 0.3;
+}
+
+.magical-title {
+    color: var(--gold);
+}
+
+.magic-quote {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.magic-quote blockquote {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: var(--beige-light);
+}
+
+.magic-quote cite {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.magic-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.magic-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 400px;
+}
+
+.magic-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.magic-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.magic-card:hover .magic-overlay {
+    transform: translateY(0);
+}
+
+.magic-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Section Personnelle */
+.personal-section {
+    padding: 100px 0;
+    background: var(--beige-light);
+}
+
+.personal-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.personal-message {
+    font-size: 1.2rem;
+    line-height: 2;
+    margin-bottom: 3rem;
+    color: var(--dark-text);
+}
+
+.personal-message p {
+    margin-bottom: 1.5rem;
+}
+
+.personal-message p:first-child {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--burgundy);
+}
+
+.classy-images {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.classy-img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.classy-img:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+/* Section Surprise */
+.surprise-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, var(--forest-green) 0%, #2E8B57 100%);
+    color: white;
+}
+
+.surprise-box {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    padding: 3rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.magic-button {
+    background: var(--gold);
+    color: var(--dark-text);
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.magic-button:hover {
+    background: #FFA500;
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255,215,0,0.3);
+}
+
+.hidden-message {
+    display: none;
+    animation: magicalReveal 1s ease-out;
+}
+
+.hidden-message.show {
+    display: block;
+}
+
+.hidden-message h3 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--gold);
+}
+
+.floating-hearts {
+    margin-top: 2rem;
+}
+
+.floating-hearts span {
+    display: inline-block;
+    font-size: 2rem;
+    margin: 0 1rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.floating-hearts span:nth-child(2) { animation-delay: 0.5s; }
+.floating-hearts span:nth-child(3) { animation-delay: 1s; }
+.floating-hearts span:nth-child(4) { animation-delay: 1.5s; }
+
+/* Footer */
+.footer {
+    background: var(--dark-text);
+    color: var(--beige-light);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes magicalReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .selfcare-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .magic-images {
+        grid-template-columns: 1fr;
+    }
+    
+    .classy-images {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .classy-img {
+        width: 250px;
+        height: 300px;
+    }
+    
+    .personal-message {
+        font-size: 1.1rem;
+    }
+    
+    .surprise-box {
+        margin: 0 1rem;
+        padding: 2rem;
+    }
+}
+
